@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Hack4Health</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_qrcode_reader">QRCodeReader</string>
+    <string name="title_activity_cadastro">Cadastro</string>
+    <string name="title_activity_lista_pacientes">ListaPacientes</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="title_activity_dashboard_farmaceutico">DashboardFarmaceutico</string>
+    <string name="title_activity_dash_board_medico">DashBoardMedico</string>
+</resources>
