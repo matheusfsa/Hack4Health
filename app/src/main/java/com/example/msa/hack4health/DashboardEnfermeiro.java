@@ -10,4 +10,5 @@ public class DashboardEnfermeiro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard_enfermeiro);
     }
+
 }

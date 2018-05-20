@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".LoginActivity"
     tools:showIn="@layout/activity_login">
@@ -43,8 +44,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="237dp"
-        android:layout_height="38dp"
+        android:layout_width="308dp"
+        android:layout_height="73dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -54,7 +55,7 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_lock_lock" />
+        app:srcCompat="@drawable/logo_1" />
 
     <EditText
         android:id="@+id/senha"
@@ -84,6 +85,7 @@
         android:layout_marginTop="36dp"
         android:background="@drawable/botao_redondo"
         android:text="Entrar"
+        android:textColor="@color/zxing_status_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/senha" />

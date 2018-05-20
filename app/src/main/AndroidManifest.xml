@@ -25,7 +25,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Cadastro"
-            android:label="@string/title_activity_cadastro"
+            android:label="Com Vida"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -37,19 +37,29 @@
         </activity>
         <activity
             android:name=".ListaPacientes"
-            android:label="@string/title_activity_lista_pacientes"
+            android:label="Com Vida"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DashboardFarmaceutico"
-            android:label="@string/title_activity_dashboard_farmaceutico"
+            android:label="Com Vida"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".DashBoardMedico"
-            android:label="@string/title_activity_dash_board_medico"
+            android:label="Com Vida"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".InformacaoPaciente" />
         <activity android:name=".AlterarProntuario" />
-        <activity android:name=".DashboardEnfermeiro"></activity>
+        <activity android:name=".DashboardEnfermeiro" />
+        <activity android:name=".DashboarMultiTarefa" />
+        <activity android:name=".MenuEnfermeiro" />
+        <activity
+            android:name=".ConfereQr"
+            android:label="Com Vida"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Checklists"
+            android:label="Com Vida"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -5,11 +5,11 @@ import java.io.Serializable;
 import classes.Medico;
 
 public class Paciente implements Serializable{
-    private Medico medico;
+    private Pessoa medico;
     private String nome;
     private String sobrenome;
 
-    public Paciente(Medico medico, String nome, String sobrenome) {
+    public Paciente(Pessoa   medico, String nome, String sobrenome) {
         this.medico = medico;
         this.nome = nome;
         this.sobrenome = sobrenome;

@@ -29,10 +29,8 @@ public class LoginActivity extends AppCompatActivity {
         final EditText senha = (EditText)findViewById(R.id.senha);
         Button entrar = (Button)findViewById(R.id.entrar);
         usuarios = new ArrayList<>();
-        usuarios.add(new Pessoa("a","2",1));
-        usuarios.add(new Pessoa("b","231233",2));
-        usuarios.add(new Pessoa("c","214313",3));
-        usuarios.add(new Pessoa("d","231111",1));
+        usuarios.add(new Pessoa("joao","2345",2));
+        usuarios.add(new Pessoa("maria","2345",3));
         entrar.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -45,15 +43,10 @@ public class LoginActivity extends AppCompatActivity {
                     Pessoa res = temUser(user);
                     if(res != null) {
                         if(res.getSenha().equals(pass)) {
-                            if(res.getFuncao() != 3) {
-                                Intent intent = new Intent(LoginActivity.this, ListaPacientes.class);
-                                intent.putExtra("Pessoa", res);
-                                startActivity(intent);
-                            }else{
-                                Intent intent = new Intent(LoginActivity.this, DashboardFarmaceutico.class);
-                                intent.putExtra("Pessoa", res);
-                                startActivity(intent);
-                            }
+                            Intent intent = new Intent(LoginActivity.this, ListaPacientes.class);
+                            intent.putExtra("Pessoa", res);
+                            startActivity(intent);
+
 
                         }else {
                             Toast.makeText(LoginActivity.this, "Senha incorreta", Toast.LENGTH_LONG).show();

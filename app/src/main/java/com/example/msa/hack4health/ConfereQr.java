@@ -1,6 +1,8 @@
 package com.example.msa.hack4health;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,15 +16,18 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-public class QRCodeReader extends AppCompatActivity {
+import classes.Paciente;
 
+public class ConfereQr extends AppCompatActivity {
+    Paciente p;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_qrcode_reader);
+        p = (Paciente)getIntent().getSerializableExtra("Paciente");
+        setContentView(R.layout.activity_confere_qr);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Button btn = (Button) findViewById(R.id.btn_scan);
+        Button btn = (Button) findViewById(R.id.verificar);
 
         final Activity activity = this;
         btn.setOnClickListener(new View.OnClickListener() {
@@ -34,18 +39,41 @@ public class QRCodeReader extends AppCompatActivity {
                 integrator.setCameraId(0);
                 integrator.setOrientationLocked(true);
                 integrator.initiateScan();
-
             }
         });
+
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
         if(result != null){
-            if(result.getContents()!=null){
-                alert(result.getContents());
-            }else{
-                alert("Scann Cancelado");
+            String s = result.getContents();
+            if(s!=null){
+
+                if(s.equals(p.getNome())){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("Alerta");
+                    builder.setMessage("Verificação feita com sucesso!");
+                    builder.setPositiveButton("Avançar", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            Intent intent = new Intent(ConfereQr.this, Checklists.class);
+                            intent.putExtra("Pessoa",p.getMedico());
+                            intent.putExtra("Paciente",p);
+                            startActivity(intent);
+
+                        }
+                    });
+                }else{
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("Alerta");
+                    builder.setMessage("O QR Code não corresponde ao paciente");
+                    builder.setPositiveButton("Tentar novamente", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            Toast.makeText(ConfereQr.this, "positivo=" + arg1, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
             }
         }else{
             super.onActivityResult(requestCode,resultCode,data);
@@ -55,4 +83,5 @@ public class QRCodeReader extends AppCompatActivity {
     private void  alert(String msg){
         Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
     }
+
 }

@@ -31,6 +31,7 @@ public class ListaPacientes extends AppCompatActivity {
     ArrayList<Paciente> lista2;
     ListView list;
     Pessoa p;
+    Paciente pe;
     MaterialSearchView materialSearchView;
     ArrayAdapter<Paciente> adapter;
     @Override
@@ -46,10 +47,12 @@ public class ListaPacientes extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         ArrayList<Paciente> banco = new ArrayList<>();
-        banco.add(new Paciente(new Medico("a"),"a","c"));
-        banco.add(new Paciente(new Medico("a"),"d","e"));
-        banco.add(new Paciente(new Medico("b"),"f","g"));
-        banco.add(new Paciente(new Medico("c"),"h","i"));
+        banco.add(new Paciente(new Pessoa("joao"),"Ana","Maria"));
+        banco.add(new Paciente(new Pessoa("maria"),"Ana","Maria"));
+        pe = (Paciente)getIntent().getSerializableExtra("Paciente");
+        if(pe!=null){
+            banco.remove(pe);
+        }
         for (Paciente pa: banco) {
             if(pa.getMedico().equals(p.getUsuario())){
                 lista.add(pa);
@@ -97,8 +100,19 @@ public class ListaPacientes extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Seu codigo aqui
                 //Toast.makeText(ListarNoticias.this, lista.get(position).toString(),Toast.LENGTH_LONG).show();
-                if(p.getFuncao() == 1) {
-                    Intent intent = new Intent(ListaPacientes.this, Dashboard.class);
+                int x = p.getFuncao();
+                if(x == 1) {
+                    Intent intent = new Intent(ListaPacientes.this, DashBoardMedico.class);
+                    intent.putExtra("paciente", lista.get(position));
+                    startActivity(intent);
+                }else if(x==3){
+                    Intent intent = new Intent(ListaPacientes.this, DashboarMultiTarefa.class);
+                    intent.putExtra("paciente", lista.get(position));
+                    intent.putExtra("pessoa", p);
+                    intent.putExtra("observacao", "Terá um melhor controle de pressão");
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(ListaPacientes.this, MenuEnfermeiro.class);
                     intent.putExtra("paciente", lista.get(position));
                     startActivity(intent);
                 }

@@ -12,6 +12,7 @@ public class Pessoa implements Serializable {
         this.senha = senha;
         this.funcao = funcao;
     }
+
     public Pessoa(String usuario) {
         this.usuario = usuario;
     }

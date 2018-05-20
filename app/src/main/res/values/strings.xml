@@ -8,4 +8,6 @@
     <string name="title_activity_dashboard">Dashboard</string>
     <string name="title_activity_dashboard_farmaceutico">DashboardFarmaceutico</string>
     <string name="title_activity_dash_board_medico">DashBoardMedico</string>
+    <string name="title_activity_confere_qr">ConfereQr</string>
+    <string name="title_activity_checklists">Checklists</string>
 </resources>
